@@ -1,0 +1,30 @@
+.headerContainer {
+  display: flex;
+  height: 85px;
+  width: 99.6%;
+  border: solid black 2.5px;
+  align-items: center;
+  justify-content: space-between;
+  .photo {
+    margin-left: 30px;
+    height: 40px;
+    width: 40px;
+    background-color: #ffc700;
+    padding: 10px;
+    border-radius: 25px;
+    border: solid black 2.5px;
+    img {
+      height: 40px;
+      width: 40px;
+    }
+  }
+  span {
+    margin-right: 30px;
+    height: 40px;
+    width: 40px;
+  }
+  .text {
+    font-size: 40px;
+    font-weight: 700;
+  }
+}

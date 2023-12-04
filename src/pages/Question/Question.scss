@@ -1,0 +1,40 @@
+.buttonsGrid {
+  display: grid;
+  grid-template-columns: 350px 350px;
+  grid-row: auto auto;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  margin-top: 40px;
+  margin-bottom: 300px;
+  .button {
+    margin: 0;
+    width: 350px;
+  }
+}
+
+.back {
+  width: 100px;
+  padding: 5px;
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 5px;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: whitesmoke;
+  border: solid black 2.5px;
+  border-radius: 10px;
+  cursor: pointer;
+  &:hover {
+    background-color: #f2f0f0;
+  }
+  &:active {
+    background-color: #e6e1e1;
+  }
+  margin-bottom: 100px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
