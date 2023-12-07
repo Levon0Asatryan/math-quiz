@@ -90,7 +90,7 @@ const Question = ({
           <div className="buttonsGrid">
             {question.answers.map((answer) => (
               <button
-                className={`button ${
+                className={`button questionButton ${
                   clicked
                     ? answer.isItRight
                       ? "rightAnswer"

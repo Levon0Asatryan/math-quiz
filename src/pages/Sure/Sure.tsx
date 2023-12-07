@@ -25,7 +25,7 @@ const Sure = (props: Props) => {
               setDirection("100%");
               navigate("/");
             }}
-            className="noButton button"
+            className="noButton button buttonMargin"
           >
             No
           </button>
@@ -34,7 +34,7 @@ const Sure = (props: Props) => {
               setDirection("-100%");
               navigate("/question/0");
             }}
-            className="button"
+            className="button buttonMargin"
           >
             Yes
           </button>

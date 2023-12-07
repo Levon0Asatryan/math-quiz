@@ -28,7 +28,7 @@ const Home = (props: Props) => {
           onClick={() => {
             navigate("/sure");
           }}
-          className="button"
+          className="button buttonMargin"
         >
           Let's go!
         </button>
