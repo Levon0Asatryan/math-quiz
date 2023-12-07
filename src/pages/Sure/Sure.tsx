@@ -17,7 +17,7 @@ const Sure = (props: Props) => {
       exit={{ x: direction, opacity: 0 }}
       transition={{ duration: 2 }}
     >
-      <div className="homeContainer">
+      <div className="homeContainer diraction">
         <div>
           <h1>Are you sure ?</h1>
           <button

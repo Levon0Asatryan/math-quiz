@@ -16,7 +16,7 @@ const Home = (props: Props) => {
       exit={{ x: "-100%", opacity: 0 }}
       transition={{ duration: 2 }}
     >
-      <div className="homeContainer">
+      <div className="homeContainer diraction">
         <h1>
           Welcome to Math Quiz <br /> Do you want to test your skills?
         </h1>

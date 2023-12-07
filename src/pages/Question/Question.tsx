@@ -2,23 +2,59 @@ import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./Question.scss";
-import { QuestionArray } from "../../App";
-import { ParsedUrlQuery } from "querystring";
+import leftArrow from "../../photos/left-arrow.png";
+import rightArrow from "../../photos/right-arrow.png";
+import { QuestionArray, QuestionType } from "../../types";
 
 type Props = {
   questions: QuestionArray;
+  setScore: Function;
 };
 
-const Question = ({ questions }: Props) => {
+const Question = ({ questions, setScore }: Props) => {
   const navigate = useNavigate();
   const [direction, setDirection] = useState("-100%");
+  const [clicked, setClicked] = useState(false);
   const params = useParams();
   const id = params.id ? +params.id : 0;
-  let question;
-  if (!params) {
+  let question: QuestionType = {
+    question: "",
+    answers: [{ answer: "", isItRight: false }],
+  };
+
+  if (params.id && params) {
+    question = questions[+params.id];
+  } else {
     navigate("/");
   }
-  if (params.id && params) question = questions[+params.id];
+
+  const goBack = () => {
+    setDirection("100%");
+    if (id === 0) {
+      navigate("/sure");
+    } else {
+      navigate(`/question/${id - 1}`);
+    }
+  };
+
+  const goNext = () => {
+    if (clicked) {
+      setDirection("-100%");
+      if (id === questions.length - 1) {
+        navigate("/final");
+      } else {
+        navigate(`/question/${id + 1}`);
+      }
+    }
+  };
+
+  const buttonClick = (isRight: boolean) => {
+    if (!clicked) {
+      setClicked(true);
+
+      if (isRight) setScore((prev: number) => prev + 1);
+    }
+  };
 
   return (
     <motion.main
@@ -30,32 +66,32 @@ const Question = ({ questions }: Props) => {
     >
       <div className="homeContainer">
         <div className="buttonContainer">
-          <button
-            onClick={() => {
-              setDirection("100%");
-              navigate(`/question/${id - 1}`);
-            }}
-            className="back"
-          >
+          <button onClick={goBack} className="back">
+            <img src={leftArrow} alt="leftArrow" />
             Back
           </button>
-          <button
-            onClick={() => {
-              setDirection("-100%");
-              navigate(`/question/${id + 1}`);
-            }}
-            className="back"
-          >
+          <button onClick={goNext} className="back">
             Next
+            <img src={rightArrow} alt="rightArrow" />
           </button>
         </div>
-        <div>
-          <h1>{question?.question}</h1>
+        <div className="questionContainer">
+          <h1 className="question">{question.question}</h1>
           <div className="buttonsGrid">
-            <button className="button">{question?.answers[0].answer}</button>
-            <button className="button">{question?.answers[1].answer}</button>
-            <button className="button">{question?.answers[2].answer}</button>
-            <button className="button">{question?.answers[3].answer}</button>
+            {question.answers.map((answer) => (
+              <button
+                className={`button ${
+                  clicked
+                    ? answer.isItRight
+                      ? "rightAnswer"
+                      : "falseAnswer"
+                    : ""
+                }`}
+                onClick={() => buttonClick(answer.isItRight)}
+              >
+                {answer.answer}
+              </button>
+            ))}
           </div>
         </div>
       </div>

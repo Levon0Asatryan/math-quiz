@@ -10,12 +10,31 @@
     margin: 0;
     width: 350px;
   }
+  .rightAnswer {
+    background-color: green;
+    border-color: white;
+    color: white;
+    &:hover {
+      background-color: green;
+    }
+  }
+  .falseAnswer {
+    background-color: red;
+    border-color: white;
+    color: white;
+    &:hover {
+      background-color: red;
+    }
+  }
 }
 
 .back {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   width: 100px;
   padding: 5px;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   margin-top: 5px;
   margin-left: 20px;
@@ -31,10 +50,27 @@
     background-color: #e6e1e1;
   }
   margin-bottom: 100px;
+  img {
+    height: 18px;
+    width: 18px;
+  }
 }
 
 .buttonContainer {
   display: flex;
   justify-content: space-between;
   width: 100%;
+}
+
+.questionContainer {
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.question {
+  padding-left: 30px !important;
+  padding-right: 30px !important;
+  min-width: 400px;
 }
