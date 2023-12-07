@@ -9,14 +9,21 @@ import { QuestionArray, QuestionType } from "../../types";
 type Props = {
   questions: QuestionArray;
   setScore: Function;
+  isPagesClicked: Boolean[];
+  setIsPagesClicked: Function;
 };
 
-const Question = ({ questions, setScore }: Props) => {
+const Question = ({
+  questions,
+  setScore,
+  isPagesClicked,
+  setIsPagesClicked,
+}: Props) => {
   const navigate = useNavigate();
   const [direction, setDirection] = useState("-100%");
-  const [clicked, setClicked] = useState(false);
   const params = useParams();
   const id = params.id ? +params.id : 0;
+  const [clicked, setClicked] = useState(isPagesClicked[id]);
   let question: QuestionType = {
     question: "",
     answers: [{ answer: "", isItRight: false }],
@@ -51,6 +58,9 @@ const Question = ({ questions, setScore }: Props) => {
   const buttonClick = (isRight: boolean) => {
     if (!clicked) {
       setClicked(true);
+      const newClickedArray = isPagesClicked;
+      newClickedArray[id] = true;
+      setIsPagesClicked(newClickedArray);
 
       if (isRight) setScore((prev: number) => prev + 1);
     }

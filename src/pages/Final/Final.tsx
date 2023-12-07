@@ -5,9 +5,11 @@ import { useNavigate } from "react-router-dom";
 type Props = {
   score: number;
   allPoints: number;
+  setIsPagesClicked: Function;
+  setScore: Function;
 };
 
-const Final = ({ score, allPoints }: Props) => {
+const Final = ({ score, allPoints, setIsPagesClicked, setScore }: Props) => {
   const navigate = useNavigate();
   let text = "";
 
@@ -22,6 +24,8 @@ const Final = ({ score, allPoints }: Props) => {
   }
 
   const restart = () => {
+    setIsPagesClicked(new Array(allPoints - 1).fill(false));
+    setScore(0);
     navigate("/");
   };
 

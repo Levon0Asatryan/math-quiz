@@ -103,6 +103,10 @@ function App() {
     },
   ];
 
+  const [isPagesClicked, setIsPagesClicked] = useState(
+    new Array(questions.length - 1).fill(false)
+  );
+
   return (
     <div className="main">
       <Header />
@@ -112,11 +116,25 @@ function App() {
           <Route path="sure" element={<Sure />} />
           <Route
             path="question/:id"
-            element={<Question questions={questions} setScore={setScore} />}
+            element={
+              <Question
+                questions={questions}
+                setScore={setScore}
+                isPagesClicked={isPagesClicked}
+                setIsPagesClicked={setIsPagesClicked}
+              />
+            }
           />
           <Route
             path="final"
-            element={<Final score={score} allPoints={questions.length} />}
+            element={
+              <Final
+                score={score}
+                allPoints={questions.length}
+                setIsPagesClicked={setIsPagesClicked}
+                setScore={setScore}
+              />
+            }
           />
         </Routes>
       </AnimatePresence>
