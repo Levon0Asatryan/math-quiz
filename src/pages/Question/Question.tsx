@@ -84,7 +84,7 @@ const Question = ({
             <img src={leftArrow} alt="leftArrow" />
             Back
           </button>
-          <h1 className="pageNumber">{`${id}/${questions.length}`}</h1>
+          <h1 className="pageNumber">{`${id + 1}/${questions.length}`}</h1>
           <button onClick={() => goNext()} className="back">
             Next
             <img src={rightArrow} alt="rightArrow" />
