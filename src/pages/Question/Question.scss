@@ -84,6 +84,17 @@
   }
 }
 
+.pageNumber {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 700;
+  height: 18px;
+  margin-top: 5px;
+  // margin: 0;
+}
+
 .buttonContainer {
   display: flex;
   justify-content: space-between;

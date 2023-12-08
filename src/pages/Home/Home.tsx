@@ -14,7 +14,7 @@ const Home = (props: Props) => {
       initial={{ width: 0 }}
       animate={{ width: "100%" }}
       exit={{ x: "-100%", opacity: 0 }}
-      transition={{ duration: 2 }}
+      transition={{ duration: 1.2 }}
     >
       <div className="homeContainer diraction">
         <h1>

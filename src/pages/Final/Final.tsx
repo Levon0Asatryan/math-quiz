@@ -5,11 +5,10 @@ import { useNavigate } from "react-router-dom";
 type Props = {
   score: number;
   allPoints: number;
-  setIsPagesClicked: Function;
-  setScore: Function;
+  restart: Function;
 };
 
-const Final = ({ score, allPoints, setIsPagesClicked, setScore }: Props) => {
+const Final = ({ score, allPoints, restart }: Props) => {
   const navigate = useNavigate();
   let text = "";
 
@@ -23,9 +22,8 @@ const Final = ({ score, allPoints, setIsPagesClicked, setScore }: Props) => {
     text = "WONDERFUL! EXCELLLENT";
   }
 
-  const restart = () => {
-    setIsPagesClicked(new Array(allPoints - 1).fill(false));
-    setScore(0);
+  const restartClick = () => {
+    restart();
     navigate("/");
   };
 
@@ -33,7 +31,7 @@ const Final = ({ score, allPoints, setIsPagesClicked, setScore }: Props) => {
     <div className="homeContainer diraction">
       <h1 className="score">{`${score}/${allPoints}`}</h1>
       <h1>{text}</h1>
-      <button className="button" onClick={restart}>
+      <button className="button" onClick={restartClick}>
         Restart
       </button>
     </div>

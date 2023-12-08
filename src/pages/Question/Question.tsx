@@ -44,8 +44,8 @@ const Question = ({
     }
   };
 
-  const goNext = () => {
-    if (clicked) {
+  const goNext = (butonClick?: Boolean) => {
+    if (clicked || butonClick) {
       setDirection("-100%");
       if (id === questions.length - 1) {
         navigate("/final");
@@ -63,6 +63,10 @@ const Question = ({
       setIsPagesClicked(newClickedArray);
 
       if (isRight) setScore((prev: number) => prev + 1);
+
+      setTimeout(() => {
+        goNext(true);
+      }, 1300);
     }
   };
 
@@ -72,7 +76,7 @@ const Question = ({
       initial={{ width: 0 }}
       animate={{ width: "100%" }}
       exit={{ x: direction, opacity: 0 }}
-      transition={{ duration: 2 }}
+      transition={{ duration: 1.2 }}
     >
       <div className="homeContainer">
         <div className="buttonContainer">
@@ -80,7 +84,8 @@ const Question = ({
             <img src={leftArrow} alt="leftArrow" />
             Back
           </button>
-          <button onClick={goNext} className="back">
+          <h1 className="pageNumber">{`${id}/${questions.length}`}</h1>
+          <button onClick={() => goNext()} className="back">
             Next
             <img src={rightArrow} alt="rightArrow" />
           </button>

@@ -107,9 +107,14 @@ function App() {
     new Array(questions.length - 1).fill(false)
   );
 
+  const restart = () => {
+    setIsPagesClicked(new Array(questions.length - 1).fill(false));
+    setScore(0);
+  };
+
   return (
     <div className="main">
-      <Header />
+      <Header restart={restart} />
       <AnimatePresence>
         <Routes location={location} key={location.pathname}>
           <Route index element={<Home />} />
@@ -131,8 +136,7 @@ function App() {
               <Final
                 score={score}
                 allPoints={questions.length}
-                setIsPagesClicked={setIsPagesClicked}
-                setScore={setScore}
+                restart={restart}
               />
             }
           />
