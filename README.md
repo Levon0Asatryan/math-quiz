@@ -9,6 +9,10 @@ Try it, if you want to suffer
 `npm i`
 `npm  start`
 
+## Netliy link
+
+https://math-quiz-from-levon.netlify.app/
+
 ## Screenshots
 
 ![Screenshot 2023-12-07 222135](https://github.com/Levon0Asatryan/math-quiz/assets/88244132/7f1e3633-be78-4713-a597-83a4aa085aa3)
